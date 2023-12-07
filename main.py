@@ -251,7 +251,7 @@ if __name__ == '__main__':
                             pydirectinput.keyDown("t")
                             pydirectinput.keyUp("t")
                         else:
-                            print("Autopilot is currently stopping.")
+                            print("ATO Stopping")
                             playsound('sounds\change.wav')
                             pydirectinput.keyDown("s")
                             pydirectinput.keyUp("s")
