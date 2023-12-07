@@ -15,9 +15,12 @@ from tkinter import simpledialog
 import threading
 import pydirectinput
 from playsound import playsound
+import gtts
+import os
 
 
 ATOactive = False
+TTSactive = False
 
 spd_pos = 884, 957, 947, 985
 lim_pos = 889, 987, 942, 1016
@@ -62,10 +65,19 @@ def create_dialog(title, question):
 def forInputClick():
     threading.Thread(target=create_dialog, daemon=True).start()
 
-def loadImg(img_path):
-    image = pygame.image.load(img_path)
-    image = pygame.transform.scale(image, (100, 100))
-    return image
+def TTSNS():
+    if TTSactive == True:
+        tts = gtts.gTTS("Approaching Station. Train Stopping")
+        tts.save('tts.mp3')
+        playsound('tts.mp3')
+        os.remove("tts.mp3")
+
+def TTSRED():
+    if TTSactive == True:
+        tts = gtts.gTTS("ATO DISENGAGED. DANGER ASPECT AHEAD. TAKE MANUAL CONTROL")
+        tts.save('tts.mp3')
+        playsound('tts.mp3')
+        os.remove("tts.mp3")
 
 if __name__ == '__main__':
     pygame.init()
@@ -82,10 +94,12 @@ if __name__ == '__main__':
     lblTime = pygame_gui.elements.UILabel(relative_rect=pygame.Rect((220, 30), (150, 50)), text='', manager=manager)
     toggleATO_btn = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((30, 100), (150, 50)), text='ATO Toggle', manager=manager)
     setMaxSpeed_btn = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((200, 100), (150, 50)), text='Set Max Speed', manager=manager)
+    toggleTTS = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((370, 100), (150, 50)), text='Toggle TTS', manager=manager)
 
     def task():
         curLim = 0
         global ATOactive
+        global TTSactive
 
         while ATOactive == True:
 
@@ -183,6 +197,7 @@ if __name__ == '__main__':
                         ATOactive = False
                         changeColour(toggleATO_btn,'#FF0000')
                         playsound('sounds\ATORedStop.wav')
+                        threading.Thread(target=TTSRED, daemon=True).start()
                     if yellow_value == (255, 190, 0):
                         print("AWS:", "yellow")
                         if templim > 45:
@@ -253,6 +268,7 @@ if __name__ == '__main__':
                         else:
                             print("ATO Stopping")
                             playsound('sounds\change.wav')
+                            threading.Thread(target=TTSNS, daemon=True).start()
                             pydirectinput.keyDown("s")
                             pydirectinput.keyUp("s")
                             time.sleep(3)
@@ -294,6 +310,13 @@ if __name__ == '__main__':
                         changeColour(toggleATO_btn,'#FF0000')
                 if event.ui_element == setMaxSpeed_btn:
                     max_speed = int(create_dialog("PyATO - Data Entry", "Enter Train's maximum speed"))
+                if event.ui_element == toggleTTS:
+                    if TTSactive == False:
+                        TTSactive = True
+                        changeColour(toggleTTS,'#00FF00')
+                    else:
+                        TTSactive = False
+                        changeColour(toggleTTS,'#FF0000')
             
             curTime = datetime.now().strftime("%H:%M:%S")
             lblTime.set_text(curTime)
