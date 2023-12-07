@@ -5,11 +5,7 @@ import time
 import math
 from PIL import ImageGrab
 from PIL import ImageFilter
-import sys
 from throttle import *
-from ahk import AHK
-import ctypes
-from win32 import win32api
 import pygame
 import pygame_gui
 from datetime import datetime
@@ -89,6 +85,7 @@ if __name__ == '__main__':
 
     def task():
         curLim = 0
+        global ATOactive
 
         while ATOactive == True:
 
