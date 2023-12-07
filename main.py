@@ -183,6 +183,9 @@ if __name__ == '__main__':
                     if red_value == (255, 0, 0):
                         print("AWS:", "red")
                         lim = 0
+                        ATOactive = False
+                        changeColour(toggleATO_btn,'#FF0000')
+                        playsound('sounds\ATORedStop.wav')
                     if yellow_value == (255, 190, 0):
                         print("AWS:", "yellow")
                         if templim > 45:
