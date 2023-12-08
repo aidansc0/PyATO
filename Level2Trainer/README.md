@@ -1,9 +1,6 @@
 # PyATO - Level 2 Trainer
 Software to provide timing details to allow for the ATO to stop at correct car markers within specific times at 45 mph.
 
-## CAUTION
-This script is not functional yet, it is only here as a WIP and to show upcoming features!!
-
 ## How to use
 - Run the python trainer.py script
 - Set the Car length, in cars. For example, a class 380/0 you would type in 3, for 3 cars.
