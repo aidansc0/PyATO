@@ -1,11 +1,14 @@
 # PyATO
 A functional rendition of Automatic Train Operation capability on SCR
 
+## Heads Up
+PyATO is in Alpha, and I mean serious Alpha testing :) - As a result, PyATO will be consistantly changing with new dependencies. At this time, it is not fully ready for public-release, but if you know how to work with Python feel more than free to have a shot at it!
+
 ## Getting Started
 PyATO works on Optical Character Recognition (OCR) to identify signal aspects, speed limits and distances. As a result the following libraries are required.
-These can be installed using the command "pip install (library")
+These can be installed using the command "pip install (library)"
 
-numpy, cv2, pytesseract, time, math, PIL - ImageGrab/ImageFilter, pygame, pygame_gui, datetime, re, tkinter, threading, pydirectinput, playsound.
+numpy, cv2, pytesseract, time, math, PIL - ImageGrab/ImageFilter, pygame, pygame_gui, datetime, re, tkinter, threading, pydirectinput, playsound, gtts.
 
 To run the script, in a command line, run "python main.py"
 
