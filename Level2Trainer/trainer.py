@@ -92,7 +92,7 @@ if __name__ == "__main__":
             im = ImageGrab.grab(bbox=(buzzer_pos))
             pix = im.load()
             buzzer_value = pix[0, 0]
-            print(buzzer_value)
+            print(curAlert[:-3])
             if undershoot_value == (255, 255, 255):
                 print("UNDERSHOOT")
             if doors_value == (255, 255, 255):
@@ -103,24 +103,21 @@ if __name__ == "__main__":
                 print("WAITING FOR GUARD")
             elif buzzer_value == (255, 255, 255):
                 print("ACTIVATING THE BUZZER")
-            else:
-                if curAlert == "Stop to load passengers":
-                    print("Platform Detected")
-                    start_time = time.time()
-                    while True:
-                        if keyboard.is_pressed('s'):
-                            end_time = time.time()
-                            break
-                        elif keyboard.is_pressed('esc'):
-                            end_time = start_time
-                            break
-                    elapsed_time = end_time - start_time
+            elif curAlert[:-3] == "Stop to load passenger":
+                print("Platform Detected")
+                start_time = time.time()
+                while True:
+                    if keyboard.is_pressed('s'):
+                        end_time = time.time()
+                        break
+                    elif keyboard.is_pressed('esc'):
+                        end_time = start_time
+                        break
+                elapsed_time = end_time - start_time
 
-                    f = open("stoppingTimes.py", "a")
-                    f.write("def " + curStation + str(carLength)  + "():\n")
-                    f.write("\ttime.sleep(" + str(elapsed_time) + ")\n")
-                    f.write("\n")
-                    f.close()
+                f = open("stoppingTimes.txt", "a")
+                f.write(curStation + " - " + str(elapsed_time) + "\n")
+                f.close()
 
     def runTraining():
         threading.Thread(target=task, daemon=True).start()
