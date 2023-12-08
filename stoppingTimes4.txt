@@ -1,0 +1,17 @@
+Stepford Cent
+ - 7.609532356262207
+Stepford Cent
+ - 0.0005006790161132812
+Stepford East
+ - 6.1271748542785645
+Stepford East
+ - 0.0005109310150146484
+St Helens Bridge
+ - 2.0302157402038574
+Elsemere Jun
+ - 0.0005064010620117188
+Elsemere Jun
+ - 2.0852456092834473
+Elsemere Jun
+ - 0.0005054473876953125
+

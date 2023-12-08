@@ -115,9 +115,11 @@ if __name__ == "__main__":
                         break
                 elapsed_time = end_time - start_time
 
-                f = open("stoppingTimes.txt", "a")
+                f = open("stoppingTimes" + str(carLength) + ".txt", "a")
                 f.write(curStation + " - " + str(elapsed_time) + "\n")
                 f.close()
+
+                elapsed_time = 0
 
     def runTraining():
         threading.Thread(target=task, daemon=True).start()
