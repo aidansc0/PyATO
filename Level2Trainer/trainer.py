@@ -15,6 +15,7 @@ import threading
 import keyboard
 
 stnNamePos = 447, 985, 655, 1015
+stopAlertPos = 852, 800, 1070, 839
 doors_pos = 870, 822, 871, 823
 loading_pos = 781, 823, 782, 824
 continue_pos = 1032, 460, 1033, 461
@@ -68,6 +69,14 @@ if __name__ == "__main__":
                 config="--psm 7")
             curStation = str(tesstr)
 
+            cap2 = ImageGrab.grab(bbox=(stopAlertPos))
+            cap2 = cap2.filter(ImageFilter.MedianFilter())
+            cap2 = cv2.cvtColor(nm.array(cap2), cv2.COLOR_RGB2GRAY)
+            tesstr2 = pytesseract.image_to_string(
+                cap2,
+                config="--psm 7")
+            curAlert = str(tesstr2)
+
             im = ImageGrab.grab(bbox=(loading_pos))
             pix = im.load()
             loading_value = pix[0, 0]
@@ -95,22 +104,23 @@ if __name__ == "__main__":
             elif buzzer_value == (255, 255, 255):
                 print("ACTIVATING THE BUZZER")
             else:
-                print("Platform Detected")
-                start_time = time.time()
-                while True:
-                    if keyboard.is_pressed('s'):
-                        end_time = time.time()
-                        break
-                    elif keyboard.is_pressed('esc'):
-                        end_time = start_time
-                        break
-                elapsed_time = end_time - start_time
+                if curAlert == "Stop to load passengers":
+                    print("Platform Detected")
+                    start_time = time.time()
+                    while True:
+                        if keyboard.is_pressed('s'):
+                            end_time = time.time()
+                            break
+                        elif keyboard.is_pressed('esc'):
+                            end_time = start_time
+                            break
+                    elapsed_time = end_time - start_time
 
-                f = open("stoppingTimes.py", "a")
-                f.write("def " + curStation + str(carLength)  + "():\n")
-                f.write("\ttime.sleep(" + str(elapsed_time) + ")\n")
-                f.write("\n")
-                f.close()
+                    f = open("stoppingTimes.py", "a")
+                    f.write("def " + curStation + str(carLength)  + "():\n")
+                    f.write("\ttime.sleep(" + str(elapsed_time) + ")\n")
+                    f.write("\n")
+                    f.close()
 
     def runTraining():
         threading.Thread(target=task, daemon=True).start()
@@ -131,7 +141,7 @@ if __name__ == "__main__":
                         trainingActive = False
                         changeColour(toggleATO_btn,'#FF0000')
                 if event.ui_element == setCarLength_btn:
-                    carLength = int(create_dialog("PyATO - Data Entry", "Enter Train's maximum speed"))
+                    carLength = int(create_dialog("L2 Trainer - Data Entry", "Enter Train length"))
 
             manager.process_events(event)
             manager.update(time_delta)
