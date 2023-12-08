@@ -8,7 +8,7 @@ This script is not functional yet, it is only here as a WIP and to show upcoming
 - Run the python trainer.py script
 - Set the Car length, in cars. For example, a class 380/0 you would type in 3, for 3 cars.
 - Toggle the trainer.
-- Approach a station at 45mph, then in one keystroke, stop at any station.
+- Approach a station at 45mph, then in one keystroke, stop at any station, stopping at the correct car marker.
 
 ## Getting Started
 Level2Trainer works on Optical Character Recognition (OCR) to identify signal aspects, speed limits and distances. As a result the following libraries are required.
