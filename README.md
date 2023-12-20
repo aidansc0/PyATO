@@ -1,8 +1,8 @@
 # PyATO
 A functional rendition of Automatic Train Operation capability on SCR
 
-## Heads Up
-PyATO is in Alpha, and I mean serious Alpha testing :) - As a result, PyATO will be consistantly changing with new dependencies. At this time, it is not fully ready for public-release, but if you know how to work with Python feel more than free to have a shot at it!
+## A quick update
+I have just seen the new GUI sneak-peak that has been released, this software heavily relies on the details provided by the GUI and as a result, once the new GUI releases - this software will become incompatible. At this moment in time, major developments in PyATO are currently paused until the new GUI update has been released to see what I will need to change
 
 ## Getting Started
 PyATO works on Optical Character Recognition (OCR) to identify signal aspects, speed limits and distances. As a result the following libraries are required.
