@@ -12,6 +12,8 @@ numpy, cv2, pytesseract, time, math, PIL - ImageGrab/ImageFilter, pygame, pygame
 
 To run the script, in a command line, run "python main.py"
 
+No support is offered with PyATO, as per licence.
+
 ## Capabilities
 PyATO is in a Alpha Stage, but at this time it is able to:
 Drive any train to a certain speed limit, Acknowledge AWS, Stop at Stations with automatic opening and closing of doors, Drive at caution according to AWS signals.
