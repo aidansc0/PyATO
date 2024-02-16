@@ -1,8 +1,5 @@
 # PyATO
-A functional rendition of Automatic Train Operation capability on SCR
-
-## A quick update
-I have just seen the new GUI sneak-peak that has been released, this software heavily relies on the details provided by the GUI and as a result, once the new GUI releases - this software will become incompatible. At this moment in time, major developments in PyATO are currently paused until the new GUI update has been released to see what I will need to change
+A functional rendition of Automatic Train Operation capability.
 
 ## Getting Started
 PyATO works on Optical Character Recognition (OCR) to identify signal aspects, speed limits and distances. As a result the following libraries are required.
@@ -22,8 +19,8 @@ Stop at specific car stop markers (sorry dispatchers), stop within the full plat
 
 ## Requirements for use
 For OCR to correctly identify in-game UI elements:
-Your monitor must be 1920x1080 or be set to this resolution, Roblox must be within fullscreen, SCR's Driving HUD should be set to large within the main-menu settings.
+Your monitor must be 1920x1080 or be set to this resolution, be within fullscreen, Driving HUD should be set to large within the main-menu settings.
 
 ## Acknowledgements 
-This is a fork of matrndev's "scr-autopilot" and much of the ATO driving logic is written by Matyáš, as a result, full credit goes to him for the self-driving capabilities we can now see in SCR.
+This is a fork of matrndev's "scr-autopilot" and much of the ATO driving logic is written by Matyáš, as a result, full credit goes to him for the self-driving capabilities.
 The GUI based on pygame and pygame-ui was implemented by myself.
